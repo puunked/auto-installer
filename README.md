@@ -5,7 +5,7 @@
 * SSL/TLS SSH, port : 443
 * Squid3, port : 8080, 3128 (limite para IP SSH)
 * Badvpn : badvpn-udpgw port 7300
-* Webmin : http://IPVPS:10000/
+* Webmin : https://IPVPS:10000/
 * Nginx : 81
 * OpenVPN TCP 1194
 * Script menu : para exibir o menu
