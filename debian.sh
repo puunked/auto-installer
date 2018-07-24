@@ -16,15 +16,15 @@ sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 # install wget and curl
 apt-get update;apt-get -y install wget curl;
 
-# set time GMT +7
-ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+# set time GMT -3
+ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
 # set repo
-wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/kholizsivoi/script/master/sources.list.debian7"
+wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/redeviver/script/master/sources.list.debian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
@@ -56,38 +56,38 @@ echo "neofetch" >> .bash_profile
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/kholizsivoi/script/master/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/redeviver/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>~sivoi~</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/kholizsivoi/script/master/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/redeviver/script/master/vps.conf"
 service nginx restart
 
 # install openvpn
-wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/kholizsivoi/script/master/vpn.tar"
+wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/redeviver/script/master/vpn.tar"
 cd /etc/openvpn/
 tar xf openvpn.tar
 rm -f /etc/openvpn/openvpn.tar
-wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/kholizsivoi/script/master/1194.conf"
+wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/redeviver/script/master/1194.conf"
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
 iptables-save > /etc/iptables_set.conf
-wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/kholizsivoi/script/master/iptables"
+wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/redeviver/script/master/iptables"
 chmod +x /etc/network/if-up.d/iptables
 service openvpn restart
 
 # konfigurasi openvpn
 cd /etc/openvpn/
-wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/kholizsivoi/script/master/client-1194.conf"
+wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/redeviver/script/master/client-1194.conf"
 sed -i $MYIP2 /etc/openvpn/client.ovpn;
 cp client.ovpn /home/vps/public_html/
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/kholizsivoi/script/master/badvpn-udpgw"
+wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/redeviver/script/master/badvpn-udpgw"
 if [ "$OS" == "x86_64" ]; then
-  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/kholizsivoi/script/master/badvpn-udpgw64"
+  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/redeviver/script/master/badvpn-udpgw64"
 fi
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
@@ -111,7 +111,7 @@ service dropbear restart
 
 # install dropbear 2017
 cd
-wget https://raw.githubusercontent.com/kholizsivoi/script/master/dropbear-2017.75.tar.bz2
+wget https://raw.githubusercontent.com/redeviver/script/master/dropbear-2017.75.tar.bz2
 apt-get install zlib1g-dev
 bzip2 -cd dropbear-2017.75.tar.bz2  | tar xvf -
 cd dropbear-2017.75
@@ -124,8 +124,8 @@ rm -f /root/dropbear-2017.75.tar.bz2
 
 # install stunnel4
 apt-get -y install stunnel4
-wget -O /etc/stunnel/stunnel.pem "https://raw.githubusercontent.com/kholizsivoi/stunnel4/master/stunnel.pem"
-wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/kholizsivoi/stunnel4/master/stunnel.conf"
+wget -O /etc/stunnel/stunnel.pem "https://raw.githubusercontent.com/redeviver/stunnel4/master/stunnel.pem"
+wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/redeviver/stunnel4/master/stunnel.conf"
 sed -i $MYIP2 /etc/stunnel/stunnel.conf
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart
@@ -137,7 +137,7 @@ service fail2ban restart
 # install squid3
 cd
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/kholizsivoi/script/master/squid3.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/redeviver/script/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
@@ -168,7 +168,7 @@ iptables -A FORWARD -m string --algo bm --string "info_hash" -j DROP
 # install ddos deflate
 cd
 apt-get -y install dnsutils dsniff
-wget https://raw.githubusercontent.com/kholizsivoi/script/master/ddos-deflate-master.zip
+wget https://raw.githubusercontent.com/redeviver/script/master/ddos-deflate-master.zip
 unzip ddos-deflate-master.zip
 cd ddos-deflate-master
 ./install.sh
@@ -176,7 +176,7 @@ rm -rf /root/ddos-deflate-master.zip
 
 # setting banner
 rm /etc/issue.net
-wget -O /etc/issue.net "https://raw.githubusercontent.com/kholizsivoi/script/master/issue.net"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/redeviver/script/master/issue.net"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 service ssh restart
@@ -184,17 +184,17 @@ service dropbear restart
 
 # download script
 cd /usr/bin
-wget -O menu "https://raw.githubusercontent.com/kholizsivoi/script/master/menu.sh"
-wget -O user-add "https://raw.githubusercontent.com/kholizsivoi/script/master/user-add.sh"
-wget -O trial "https://raw.githubusercontent.com/kholizsivoi/script/master/trial.sh"
-wget -O user-del "https://raw.githubusercontent.com/kholizsivoi/script/master/hapus.sh"
-wget -O user-login "https://raw.githubusercontent.com/kholizsivoi/script/master/user-login.sh"
-wget -O user-list "https://raw.githubusercontent.com/kholizsivoi/script/master/user-list.sh"
-wget -O expdel "https://raw.githubusercontent.com/kholizsivoi/script/master/delexp.sh"
-wget -O resvis "https://raw.githubusercontent.com/kholizsivoi/script/master/resvis.sh"
-wget -O speedtest "https://raw.githubusercontent.com/kholizsivoi/script/master/speedtest_cli.py"
-wget -O info "https://raw.githubusercontent.com/kholizsivoi/script/master/info.sh"
-wget -O about "https://raw.githubusercontent.com/kholizsivoi/script/master/about.sh"
+wget -O menu "https://raw.githubusercontent.com/redeviver/script/master/menu.sh"
+wget -O user-add "https://raw.githubusercontent.com/redeviver/script/master/user-add.sh"
+wget -O trial "https://raw.githubusercontent.com/redeviver/script/master/trial.sh"
+wget -O user-del "https://raw.githubusercontent.com/redeviver/script/master/hapus.sh"
+wget -O user-login "https://raw.githubusercontent.com/redeviver/script/master/user-login.sh"
+wget -O user-list "https://raw.githubusercontent.com/redeviver/script/master/user-list.sh"
+wget -O expdel "https://raw.githubusercontent.com/redeviver/script/master/delexp.sh"
+wget -O resvis "https://raw.githubusercontent.com/redeviver/script/master/resvis.sh"
+wget -O speedtest "https://raw.githubusercontent.com/redeviver/script/master/speedtest_cli.py"
+wget -O info "https://raw.githubusercontent.com/redeviver/script/master/info.sh"
+wget -O about "https://raw.githubusercontent.com/redeviver/script/master/about.sh"
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
@@ -227,7 +227,7 @@ echo "unset HISTFILE" >> /etc/profile
 clear
 
 # info
-echo "~sivoi~"
+echo "R3V1V3R"
 echo "Autoscript Include:" | tee log-install.txt
 echo "===========================================" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -257,8 +257,8 @@ echo "info         (Menampilkan Informasi Sistem)"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
-echo "Webmin   : http://$MYIP:10000/"  | tee -a log-install.txt
-echo "Timezone : Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
+echo "Webmin   : https://$MYIP:10000/"  | tee -a log-install.txt
+echo "Timezone : America/Sao_Paulo (GMT -3)"  | tee -a log-install.txt
 echo "IPv6     : [off]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Thanks To"  | tee -a log-install.txt
