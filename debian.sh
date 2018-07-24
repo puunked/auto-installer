@@ -25,7 +25,7 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
 # set repo
-wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/redeviver/script/master/sources.list.debian7"
+wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/redeviver/script/master/sources.list.debian8"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
@@ -265,13 +265,13 @@ echo ""  | tee -a log-install.txt
 echo "Thanks To"  | tee -a log-install.txt
 echo "---------"  | tee -a log-install.txt
 echo "R3V1V3R 1NT3RN3T L1VR3"  | tee -a log-install.txt
-echo "Admin And All Member KPN Family"  | tee -a log-install.txt
+echo "TheGrapevine "  | tee -a log-install.txt
 echo "Google"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "----"  | tee -a log-install.txt
-echo "CPM/OOCPM"  | tee -a log-install.txt
-echo "KPN IMO"  | tee -a log-install.txt
+echo "https://t.me/tcpoverhttptunnel"  | tee -a log-install.txt
+echo "@thegrapevine"  | tee -a log-install.txt
 echo "K.A.G"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "VPS AUTO REBOOT SETIAP JAM 00.00 WIB"  | tee -a log-install.txt
