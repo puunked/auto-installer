@@ -1,5 +1,5 @@
 #!/bin/bash
-# ~sivoi~
+# R3V1V3R
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
@@ -58,7 +58,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/redeviver/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>~sivoi~</pre>" > /home/vps/public_html/index.html
+echo "<pre>R3V1V3R 1NT3RN3T L1VR3</pre>" > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/redeviver/script/master/vps.conf"
 service nginx restart
 
@@ -77,11 +77,11 @@ wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/redeviv
 chmod +x /etc/network/if-up.d/iptables
 service openvpn restart
 
-# konfigurasi openvpn
+# configuração openvpn
 cd /etc/openvpn/
-wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/redeviver/script/master/client-1194.conf"
-sed -i $MYIP2 /etc/openvpn/client.ovpn;
-cp client.ovpn /home/vps/public_html/
+wget -O /etc/openvpn/r3v1v3r.ovpn "https://raw.githubusercontent.com/redeviver/script/master/client-1194.conf"
+sed -i $MYIP2 /etc/openvpn/r3v1v3r.ovpn;
+cp r3v1v3r.ovpn /home/vps/public_html/
 
 # install badvpn
 cd
@@ -237,21 +237,21 @@ echo "OpenSSH  : 22, 143"  | tee -a log-install.txt
 echo "Dropbear : 80, 444"  | tee -a log-install.txt
 echo "SSL      : 443"  | tee -a log-install.txt
 echo "Squid3   : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
-echo "OpenVPN  : TCP 1194 (client config : http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
+echo "OpenVPN  : TCP 1194 (client config : http://$MYIP:81/r3v1v3r.ovpn)"  | tee -a log-install.txt
 echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
 echo "nginx    : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Script"  | tee -a log-install.txt
 echo "------"  | tee -a log-install.txt
-echo "menu         (Menampilkan daftar perintah yang tersedia)"  | tee -a log-install.txt
-echo "user-add     (Membuat Akaun SSH)"  | tee -a log-install.txt
-echo "trial        (Membuat Akaun Trial)"  | tee -a log-install.txt
-echo "user-del     (Menghapus Akaun SSH)"  | tee -a log-install.txt
-echo "user-login   (Cek User Login)"  | tee -a log-install.txt
-echo "user-list    (Cek Member SSH)"  | tee -a log-install.txt
-echo "expdel       (Delete User expired)"  | tee -a log-install.txt
-echo "resvis       (Restart Service Dropbear, Webmin, Squid3, OpenVPN dan SSH)"  | tee -a log-install.txt
-echo "reboot       (Reboot VPS)"  | tee -a log-install.txt
+echo "menu         (Exibe uma lista de comandos disponíveis)"  | tee -a log-install.txt
+echo "user-add     (Criando uma conta SSH)"  | tee -a log-install.txt
+echo "trial        (Criando uma conta Teste)"  | tee -a log-install.txt
+echo "user-del     (Removendo Contas SSH)"  | tee -a log-install.txt
+echo "user-login   (Verifique o login do usuário)"  | tee -a log-install.txt
+echo "user-list    (Verificar membro SSH)"  | tee -a log-install.txt
+echo "expdel       (Excluir usuário expirado)"  | tee -a log-install.txt
+echo "resvis       (Reiniciar Service Dropbear, Webmin, Squid3, OpenVPN e SSH)"  | tee -a log-install.txt
+echo "reboot       (Reiniciar VPS)"  | tee -a log-install.txt
 echo "speedtest    (Speedtest VPS)"  | tee -a log-install.txt
 echo "info         (Menampilkan Informasi Sistem)"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -263,11 +263,11 @@ echo "IPv6     : [off]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Thanks To"  | tee -a log-install.txt
 echo "---------"  | tee -a log-install.txt
-echo "Allah"  | tee -a log-install.txt
+echo "R3V1V3R 1NT3RN3T L1VR3"  | tee -a log-install.txt
 echo "Admin And All Member KPN Family"  | tee -a log-install.txt
 echo "Google"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "Goup"  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
 echo "----"  | tee -a log-install.txt
 echo "CPM/OOCPM"  | tee -a log-install.txt
 echo "KPN IMO"  | tee -a log-install.txt
