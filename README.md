@@ -17,7 +17,7 @@
 * Script resvis : restart service dropbear, webmin, squid3, openvpn dan ssh
 * Script speedtest : speedtest VPS
 * Script about : informações sobre o script de instalação automática
-* Antes do script de instalação automática seguinte ser instalado, verifique se o seu VPS tem OS Debian 7 32/64 Bit. Certifique-se de que o VPS ainda está vazio.
+* Antes do script de instalação automática seguinte ser instalado, verifique se o seu VPS tem OS Debian 8 32/64 Bit. Certifique-se de que o VPS ainda está vazia sem scripts anteriores.
 
 ● Copiar o seguinte comando e pressione enter
 * apt-get install ca-certificates
