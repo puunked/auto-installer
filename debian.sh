@@ -234,6 +234,7 @@ service stunnel4 restart
 service squid3 restart
 service fail2ban restart
 service webmin restart
+apt-get autoremove -y
 rm -rf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
 clear
