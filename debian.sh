@@ -154,64 +154,7 @@ apt-get -y install squid3
 wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/redeviver/script/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 
-function addhost(){ echo '#!/bin/bash
-echo "Qual host deseja adicionar ?"
-read -p ": " host
-echo "$host" >> /etc/payloads
-squid -k reconfigure > /dev/null 2> /dev/null
-squid3 -k reconfigure > /dev/null 2> /dev/null
-echo "$host Adicionado" ' > /bin/addhost
-chmod a+x /bin/addhost
-}
 
-function payloads(){ echo "
-echo "
-.bookclaro.com.br
-.claro.com.ar
-.claro.com.br
-.claro.com.co
-.claro.com.ec
-.claro.com.gt
-.claro.com.ni
-.claro.com.pe
-.claro.com.sv
-.claro.cr
-.clarocurtas.com.br
-.claroideas.com
-.claroideias.com.br
-.claromusica.com
-.clarosomdechamada.com.br
-.clarovideo.com
-.facebook.net
-.netclaro.com.br
-.oi.com.br
-.oimusica.com.br
-.speedtest.net
-.tim.com.br
-.timanamaria.com.br
-.vivo.com.br
-.ddivulga.com
-.clarosomdechamada.com.br
-.bradescocelular.com.br
-minhaclaro.claro.com.br
-recargafacil.claro.com.br
-frontend.claro.com.br
-appfb.claro.com.sv
-empresas.claro.com.br
-d1n212ccp6ldpw.cloudfront.net
-claro-gestoronline.claro.com.br
-forms.claro.com.br
-golpf.claro.com.br
-logtiscap.claro.com.br
-.recargafacil.claro.com.br
-.vivo.com.br
-.bradescocelular.com.br
-.claroseguridad.com
-portalrecarga.vivo.com.br/recarga
-portalrecarga.vivo.com.br/recarga/home/
-.veek.com.br
-" > /etc/payloads
-}
 service squid3 restart
 
 # install webmin
