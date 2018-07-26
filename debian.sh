@@ -13,13 +13,18 @@ cd
 cat /etc/[A-Za-z]*[_-][rv]e[lr]* ;
 sleep 5
 
+killall exim4
+apt-get -y --purge remove samba*
+apt-get -y --purge remove exim4*
+apt-get -y --purge remove sendmail*
+apt-get -y --purge remove bind9*
+
 # disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 
 # install wget, sudo and curl
 apt-get update;apt-get -y install wget sudo curl;
-adduser r3v1v3r sudo 
 
 # set time GMT -3
 ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
