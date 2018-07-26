@@ -17,8 +17,9 @@ sleep 5
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 
-# install wget and curl
-apt-get update;apt-get -y install wget curl;
+# install wget, sudo and curl
+apt-get update;apt-get -y install wget sudo curl;
+adduser r3v1v3r sudo 
 
 # set time GMT -3
 ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
