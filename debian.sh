@@ -104,6 +104,12 @@ sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
 service ssh restart
 
+# install sslh
+apt-get -y install sslh
+sed -i 's/RUN=no/RUN=yes/g' /etc/default/sslh
+sed -i 's/DAEMON_OPTS="--user sslh --listen <change-me>:443 --ssh 127.0.0.1:22 --ssl 127.0.0.1:443 --pidfile /var/run/sslh/sslh.pid"/DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --http 127.0.0.1:81 --ssl 127.0.0.1:444 -P /var/run/sslh/sslh.pid"/g' /etc/default/sslh
+service sslh start
+
 # install dropbear
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
@@ -222,6 +228,7 @@ service nginx start
 service openvpn restart
 service cron restart
 service ssh restart
+service sslh restart
 service dropbear restart
 service stunnel4 restart
 service squid3 restart
