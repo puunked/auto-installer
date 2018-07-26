@@ -150,6 +150,65 @@ cd
 apt-get -y install squid3
 wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/redeviver/script/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
+
+function addhost(){ echo '#!/bin/bash
+echo "Qual host deseja adicionar ?"
+read -p ": " host
+echo "$host" >> /etc/payloads
+squid -k reconfigure > /dev/null 2> /dev/null
+squid3 -k reconfigure > /dev/null 2> /dev/null
+echo "$host Adicionado" ' > /bin/addhost
+chmod a+x /bin/addhost
+}
+
+function payloads(){ echo "
+echo "
+.bookclaro.com.br
+.claro.com.ar
+.claro.com.br
+.claro.com.co
+.claro.com.ec
+.claro.com.gt
+.claro.com.ni
+.claro.com.pe
+.claro.com.sv
+.claro.cr
+.clarocurtas.com.br
+.claroideas.com
+.claroideias.com.br
+.claromusica.com
+.clarosomdechamada.com.br
+.clarovideo.com
+.facebook.net
+.netclaro.com.br
+.oi.com.br
+.oimusica.com.br
+.speedtest.net
+.tim.com.br
+.timanamaria.com.br
+.vivo.com.br
+.ddivulga.com
+.clarosomdechamada.com.br
+.bradescocelular.com.br
+minhaclaro.claro.com.br
+recargafacil.claro.com.br
+frontend.claro.com.br
+appfb.claro.com.sv
+empresas.claro.com.br
+d1n212ccp6ldpw.cloudfront.net
+claro-gestoronline.claro.com.br
+forms.claro.com.br
+golpf.claro.com.br
+logtiscap.claro.com.br
+.recargafacil.claro.com.br
+.vivo.com.br
+.bradescocelular.com.br
+.claroseguridad.com
+portalrecarga.vivo.com.br/recarga
+portalrecarga.vivo.com.br/recarga/home/
+.veek.com.br
+" > /etc/payloads
+}
 service squid3 restart
 
 # install webmin
@@ -247,10 +306,11 @@ echo ""  | tee -a log-install.txt
 echo "Service"  | tee -a log-install.txt
 echo "-------"  | tee -a log-install.txt
 echo "OpenSSH  : 22, 143"  | tee -a log-install.txt
-echo "Dropbear : 80, 444"  | tee -a log-install.txt
-echo "SSL      : 443"  | tee -a log-install.txt
-echo "Squid3   : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
-echo "OpenVPN  : TCP 1194 (client config : http://$MYIP:81/r3v1v3r.ovpn)"  | tee -a log-install.txt
+echo "Dropbear : 443, 444"  | tee -a log-install.txt
+echo "SSL      : 993"  | tee -a log-install.txt
+echo "Squid3   : 80, 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
+echo "OpenVPN R3V1V3R : TCP 1194 (client config : http://$MYIP:81/r3v1v3r.ovpn)"  | tee -a log-install.txt
+echo "OpenVPN Stunnel : TCP 1195 (client config : http://$MYIP:81/stunnel.ovpn)"  | tee -a log-install.txt
 echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
 echo "nginx    : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -260,7 +320,7 @@ echo "menu         (Exibe uma lista de comandos disponíveis)"  | tee -a log-ins
 echo "user-add     (Criando uma conta SSH)"  | tee -a log-install.txt
 echo "trial        (Criando uma conta Teste)"  | tee -a log-install.txt
 echo "user-del     (Removendo Contas SSH)"  | tee -a log-install.txt
-echo "user-login   (Verifique o login do usuário)"  | tee -a log-install.txt
+echo "user-login   (Verifique o login de usuário)"  | tee -a log-install.txt
 echo "user-list    (Verificar membro SSH)"  | tee -a log-install.txt
 echo "expdel       (Excluir usuário expirado)"  | tee -a log-install.txt
 echo "resvis       (Reiniciar Service Dropbear, Webmin, Squid3, OpenVPN e SSH)"  | tee -a log-install.txt
@@ -270,7 +330,7 @@ echo "info         (Menampilkan Informasi Sistem)"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
-echo "Webmin   : https://$MYIP:10000/"  | tee -a log-install.txt
+echo "Webmin   : http://$MYIP:10000/"  | tee -a log-install.txt
 echo "Timezone : America/Sao_Paulo (GMT -3)"  | tee -a log-install.txt
 echo "IPv6     : [off]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -284,7 +344,7 @@ echo ""  | tee -a log-install.txt
 echo "----"  | tee -a log-install.txt
 echo "https://t.me/tcpoverhttptunnel"  | tee -a log-install.txt
 echo "@thegrapevine"  | tee -a log-install.txt
-echo "K.A.G"  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "VPS AUTO REBOOT SETIAP JAM 00.00 WIB"  | tee -a log-install.txt
 echo "Log Installation --> /root/log-install.txt"  | tee -a log-install.txt
