@@ -114,9 +114,9 @@ echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
 
-# install dropbear 2017
+# install dropbear 2018
 cd
-wget https://raw.githubusercontent.com/redeviver/script/master/dropbear-2018.76.tar.bz2
+wget https://matt.ucc.asn.au/dropbear/releases/dropbear-2018.76.tar.bz2 #https://raw.githubusercontent.com/redeviver/script/master/
 apt-get install zlib1g-dev
 bzip2 -cd dropbear-2018.76.tar.bz2  | tar xvf -
 cd dropbear-2018.76
