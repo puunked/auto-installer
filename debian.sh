@@ -106,8 +106,10 @@ service ssh restart
 
 # install sslh
 apt-get -y install sslh
-sed -i 's/RUN=no/RUN=yes/g' /etc/default/sslh
-sed -i 's/DAEMON_OPTS="--user sslh --listen <change-me>:443 --ssh 127.0.0.1:22 --ssl 127.0.0.1:443 --pidfile /var/run/sslh/sslh.pid"/DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --http 127.0.0.1:81 --ssl 127.0.0.1:443 -P /var/run/sslh/sslh.pid"/g' /etc/default/sslh
+echo RUN=yes > /etc/default/sslh
+echo DAEMON=/usr/sbin/sslh > /etc/default/sslh
+echo DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --http 127.0.0.1:80 --ssl 127.0.0.1:443 -P /var/run/sslh/sslh.pid" > /etc/default/sslh
+cat /etc/default/sslh
 service sslh start
 
 # install dropbear
