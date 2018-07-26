@@ -122,7 +122,7 @@ service sslh start
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 88"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 444"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
@@ -159,8 +159,24 @@ cd
 apt-get -y install squid3
 wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/redeviver/script/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
-
-
+echo "
+minhaclaro.claro.com.br
+recargafacil.claro.com.br
+frontend.claro.com.br
+appfb.claro.com.sv
+empresas.claro.com.br
+d1n212ccp6ldpw.cloudfront.net
+claro-gestoronline.claro.com.br
+forms.claro.com.br
+golpf.claro.com.br
+logtiscap.claro.com.br
+www.recargafacil.claro.com.br
+.vivo.com.br
+.bradescocelular.com.br
+.claroseguridad.com
+portalrecarga.vivo.com.br/recarga
+portalrecarga.vivo.com.br/recarga/home/
+.veek.com.br" >> /etc/payloads
 service squid3 restart
 
 # install webmin
