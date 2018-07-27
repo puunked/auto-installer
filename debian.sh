@@ -321,7 +321,7 @@ echo "unset HISTFILE" >> /etc/profile
 clear
 
 # info
-echo "\033[1;33mR3V1V3R"
+echo -e "\033[1;33mR3V1V3R"
 echo "Autoscript Include:" | tee log-install.txt
 echo "===========================================" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -371,6 +371,6 @@ echo ""  | tee -a log-install.txt
 echo "VPS AUTO REBOOT SETIAP JAM 00.00 WIB"  | tee -a log-install.txt
 echo "Log Installation --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "===========================================\033[1;37m"  | tee -a log-install.txt
+echo -e "===========================================\033[1;37m"  | tee -a log-install.txt
 cd
 rm -f /root/debian.sh
