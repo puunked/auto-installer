@@ -66,7 +66,9 @@ cd
 cat /etc/[A-Za-z]*[_-][rv]e[lr]* ;
 sleep 5
 
-killall -9 exim4
+# stop/remove services
+killall apache2
+apt-get purge apache2 -y
 apt-get -y --purge remove samba*
 apt-get -y --purge remove exim4*
 apt-get -y --purge remove sendmail*
@@ -213,7 +215,12 @@ cd
 apt-get -y install squid3
 wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/redeviver/script/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
-echo "
+sleep 2s
+###PAYLOADS###
+touch /etc/payloads
+echo -e "
+portalrecarga.vivo.com.br/recarga
+portalrecarga.vivo.com.br/recarga/home/
 minhaclaro.claro.com.br
 recargafacil.claro.com.br
 frontend.claro.com.br
@@ -228,8 +235,6 @@ www.recargafacil.claro.com.br
 .vivo.com.br
 .bradescocelular.com.br
 .claroseguridad.com
-portalrecarga.vivo.com.br/recarga
-portalrecarga.vivo.com.br/recarga/home/
 .veek.com.br" > /etc/payloads
 service squid3 restart
 
