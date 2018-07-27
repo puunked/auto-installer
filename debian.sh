@@ -20,7 +20,7 @@ azulClaro="\033[1;34m"
 purpleClaro="\033[1;35m"
 cyanClaro="\033[1;36m"
 branco="\033[1;37m"
-
+clear
 echo -e "\033[1;30m----------------------------------------------------------------------\033[0m"
 echo -e "\033[1;37m                           .                                          \033[0m"
 echo -e "\033[1;37m                      .XG@B@@1                                        \033[0m"  
@@ -53,6 +53,8 @@ tput setaf 8 ; tput setab 5 ; tput bold ; printf '%30s%s%-15s\n' "R3V1V3R" ; tpu
 echo ""
 echo ""
 echo -e "\033[1;34m INSTALANDO...\033[1;32m"
+
+sleep 5
 
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
@@ -319,7 +321,7 @@ echo "unset HISTFILE" >> /etc/profile
 clear
 
 # info
-echo "R3V1V3R"
+echo "\033[1;33mR3V1V3R"
 echo "Autoscript Include:" | tee log-install.txt
 echo "===========================================" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
@@ -369,6 +371,6 @@ echo ""  | tee -a log-install.txt
 echo "VPS AUTO REBOOT SETIAP JAM 00.00 WIB"  | tee -a log-install.txt
 echo "Log Installation --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "==========================================="  | tee -a log-install.txt
+echo "===========================================\033[1;37m"  | tee -a log-install.txt
 cd
 rm -f /root/debian.sh
