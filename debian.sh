@@ -49,7 +49,7 @@ echo -e "\033[1;30m-------------------------------------------------------------
 
 sleep 5
 
-tput setaf 8 ; tput setab 5 ; tput bold ; printf '%55s%s%-35s\n' "R3V1V3R" ; tput sgr0
+tput setaf 8 ; tput setab 5 ; tput bold ; printf '%45s%s%-35s\n' "R3V1V3R" ; tput sgr0
 echo ""
 echo ""
 echo -e "\033[1;34m INSTALANDO...\033[1;32m"
