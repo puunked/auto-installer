@@ -3,6 +3,57 @@
 # 1NT3RN3T
 # L1VR3
 
+corPadrao="\033[0m"
+preto="\033[0;30m"
+vermelho="\033[0;31m"
+verde="\033[0;32m"
+marrom="\033[0;33m"
+azul="\033[0;34m"
+purple="\033[0;35m"
+cyan="\033[0;36m"
+cinzaClaro="\033[0;37m"
+pretoCinza="\033[1;30m"
+vermelhoClaro="\033[1;31m"
+verdeClaro="\033[1;32m"
+amarelo="\033[1;33m"
+azulClaro="\033[1;34m"
+purpleClaro="\033[1;35m"
+cyanClaro="\033[1;36m"
+branco="\033[1;37m"
+
+echo -e "\033[1;30m----------------------------------------------------------------------\033[0m"
+echo -e "\033[1;37m                           .                                          \033[0m"
+echo -e "\033[1;37m                      .XG@B@@1                                        \033[0m"  
+echo -e "\033[1;37m                      @B@@@B@                                         \033[0m"
+echo -e "\033[1;37m                      B@B@B@M          ,,::i.                         \033[0m"
+echo -e "\033[1;37m                      @B@BOO@qi       iLPSF5X:                        \033[0m"
+echo -e "\033[1;37m                      B@Bri2B@B@:    PB@Bkri7v,                       \033[0m"    
+echo -e "\033[1;37m                      @B@     7@Z   :BN                               \033[0m"
+echo -e "\033[1;37m                      B@B@ii:  :B0  .7 .i77i.P:                       \033[0m"
+echo -e "\033[1;37m                      @B:7GB@M7B@@,    k@B@XrBS                       \033[0m"
+echo -e "\033[1;37m                      B0       @B@r                                   \033[0m"
+echo -e "\033[1;37m                      @L      8B@B:                                   \033[0m" 
+echo -e "\033[1;37m                      XO     @B@B@      ,.                            \033[0m"
+echo -e "\033[1;37m                      :B.j0Pii7G@B  .;   :7FSX.                       \033[0m"
+echo -e "\033[1;37m                       @:LB@:   .@B@@r   .BMB.                        \033[0m"
+echo -e "\033[1;37m                       .@.jiBB@B@@:.@B@B@B:L7                         \033[0m" 
+echo -e "\033[1;37m                        :@v5   .:.   .:.  uX                          \033[0m"
+echo -e "\033[1;37m                         .@2F    :Jij    EL                           \033[0m"
+echo -e "\033[1;37m                           MNL    @@J  ,k.                            \033[0m"
+echo -e "\033[1;37m                            UBv   @BE .U                              \033[0m"
+echo -e "\033[1;37m                             :E7 .B@B .                               \033[0m"
+echo -e "\033[1;37m                               i  @Br                                 \033[0m"
+echo -e "\033[1;37m                                  @                                   \033[0m" 
+echo -e "\033[1;37m                                                                      \033[0m"  
+echo -e "\033[1;30m----------------------------------------------------------------------\033[0m"
+
+sleep 5
+
+tput setaf 8 ; tput setab 5 ; tput bold ; printf '%30s%s%-15s\n' "R3V1V3R" ; tput sgr0
+echo ""
+echo ""
+echo -e "\033[1;34m INSTALANDO...\033[1;32m"
+
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
