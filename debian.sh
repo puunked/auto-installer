@@ -49,7 +49,7 @@ echo -e "\033[1;30m-------------------------------------------------------------
 
 sleep 5
 
-tput setaf 8 ; tput setab 5 ; tput bold ; printf '%45s%s%-35s\n' "R3V1V3R" ; tput sgr0
+tput setaf 8 ; tput setab 5 ; tput bold ; printf '%35s%s%-25s\n' "R3V1V3R" ; tput sgr0
 echo ""
 echo ""
 echo -e "\033[1;34m INSTALANDO...\033[1;32m"
@@ -66,7 +66,7 @@ cd
 cat /etc/[A-Za-z]*[_-][rv]e[lr]* ;
 sleep 5
 
-killall exim4
+killall -9 exim4
 apt-get -y --purge remove samba*
 apt-get -y --purge remove exim4*
 apt-get -y --purge remove sendmail*
@@ -230,7 +230,7 @@ www.recargafacil.claro.com.br
 .claroseguridad.com
 portalrecarga.vivo.com.br/recarga
 portalrecarga.vivo.com.br/recarga/home/
-.veek.com.br" >> /etc/payloads
+.veek.com.br" > /etc/payloads
 service squid3 restart
 
 # install webmin
