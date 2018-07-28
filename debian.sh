@@ -183,6 +183,7 @@ echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
+
 service sslh restart
 
 # install dropbear 2018
@@ -371,7 +372,6 @@ echo ""  | tee -a log-install.txt
 echo "----"  | tee -a log-install.txt
 echo "https://t.me/tcpoverhttptunnel"  | tee -a log-install.txt
 echo "@thegrapevine"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "VPS AUTO REBOOT SETIAP JAM 00.00 WIB"  | tee -a log-install.txt
 echo "Log Installation --> /root/log-install.txt"  | tee -a log-install.txt
