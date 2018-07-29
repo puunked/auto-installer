@@ -3,7 +3,7 @@
 * OpenSSH, port : 22, 143
 * Dropbear, port : 443, 444
 * SSL/TLS SSH, port : 943
-* Squid3, port : 80, 8080, 3128 (limite para IP SSH)
+* Squid3, port : 80, 3128, 8799, 8080 (limite para IP SSH)
 * Badvpn : badvpn-udpgw port 7300
 * Webmin : http://IPVPS:10000/
 * Nginx : 81
