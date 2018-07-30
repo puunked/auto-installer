@@ -171,7 +171,7 @@ apt-get -y install sslh
 echo ' 
 RUN=yes
 DAEMON=/usr/sbin/sslh
-DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:143 --openvpn 127.0.0.1:1195 --http 127.0.0.1:81 --ssl 127.0.0.1:4443 --tsl 127.0.0.1:4444 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
+DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --ssl 127.0.0.1:443 --tsl 127.0.0.1:444 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
 cat /etc/default/sslh
 service sslh start
 
@@ -182,7 +182,7 @@ sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 444"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
-service ssh restart
+service sshd restart
 service dropbear restart
 
 service sslh restart
