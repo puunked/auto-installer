@@ -121,6 +121,7 @@ echo "neofetch" >> .bash_profile
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
+#rm /etc/nginx/snippets/listen-https.conf
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/redeviver/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>R3V1V3R 1NT3RN3T L1VR3</pre>" > /home/vps/public_html/index.html
