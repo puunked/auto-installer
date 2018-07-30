@@ -170,7 +170,7 @@ apt-get -y install sslh
 echo ' 
 RUN=yes
 DAEMON=/usr/sbin/sslh
-DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --http 127.0.0.1:80 --tsl 127.0.0.1:4443 --ssl 127.0.0.1:4444 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
+DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:143 --openvpn 127.0.0.1:1195 --http 127.0.0.1:81 --ssl 127.0.0.1:4443 --tsl 127.0.0.1:4444 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
 cat /etc/default/sslh
 service sslh start
 
@@ -320,7 +320,7 @@ chown -R www-data:www-data /home/vps/public_html
 service nginx start
 service openvpn restart
 service cron restart
-service ssh restart
+service sshd restart
 service sslh restart
 service dropbear restart
 service stunnel4 restart
@@ -344,7 +344,8 @@ echo "Dropbear : 443, 444"  | tee -a log-install.txt
 echo "SSL      : 943"  | tee -a log-install.txt
 echo "Squid3   : 80, 3128, 8799, 8080 (limit to IP SSH)"  | tee -a log-install.txt
 echo "OpenVPN R3V1V3R : TCP 1194 (client config : http://$MYIP:81/r3v1v3r.ovpn)"  | tee -a log-install.txt
-echo "OpenVPN Stunnel : TCP 1195 (client config : http://$MYIP:81/stunnel.ovpn)"  | tee -a log-install.txt
+echo "OpenVPN SSLH    : TCP 1195 (client config : http://$MYIP:81/sslh.ovpn)"  | tee -a log-install.txt
+echo "OpenVPN Stunnel : TCP 1196 (client config : http://$MYIP:81/stunnel.ovpn)"  | tee -a log-install.txt
 echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
 echo "nginx    : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
