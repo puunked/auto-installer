@@ -170,7 +170,7 @@ apt-get -y install sslh
 echo ' 
 RUN=yes
 DAEMON=/usr/sbin/sslh
-DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --http 127.0.0.1:80 --ssl 127.0.0.1:443 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
+DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --http 127.0.0.1:80 --tsl 127.0.0.1:4443 --ssl 127.0.0.1:4444 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
 cat /etc/default/sslh
 service sslh start
 
