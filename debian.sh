@@ -178,8 +178,8 @@ service sslh start
 # install dropbear
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 444"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=80/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 80 -p 443"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service sshd restart
@@ -226,7 +226,7 @@ sleep 2s
 touch /etc/payloads
 echo -e "
 portalrecarga.vivo.com.br/recarga
-portalrecarga.vivo.com.br/recarga/home/
+portalrecarga.vivo.com.br/recarga/home
 minhaclaro.claro.com.br
 recargafacil.claro.com.br
 frontend.claro.com.br
