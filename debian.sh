@@ -137,7 +137,7 @@ wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/redeviver/scri
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-iptables -t nat -I POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+iptables -t nat -I POSTROUTING -s 10.8.10.0/24 -o eth0 -j MASQUERADE
 iptables-save > /etc/iptables_set.conf
 wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/redeviver/script/master/iptables"
 chmod +x /etc/network/if-up.d/iptables
@@ -206,6 +206,10 @@ wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/redeviver/s
 sed -i $MYIP2 /etc/stunnel/stunnel.conf
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart
+iptables -A INPUT -p tcp --dport 587 -j ACCEPT
+iptables -A INPUT -p tcp --dport 943 -j ACCEPT
+iptables -A INPUT -p tcp --dport 8888 -j ACCEPT
+iptables-save > /etc/iptables_set.conf
 
 # install fail2ban
 apt-get -y install fail2ban;
