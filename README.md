@@ -2,7 +2,9 @@
 
 * OpenSSH, port : 22, 143
 * Dropbear, port : 443, 444
-* SSL/TLS SSH, port : 943
+* SSLH : SSL/SSH Multiplexer
+* SSL/TLS 
+* STUNNEL : OVPN port : 587, SSH port : 943, SQUID port : 8888  
 * Squid3, port : 80, 3128, 8799, 8080 (limite para IP SSH)
 * Badvpn : badvpn-udpgw port 7300
 * Webmin : http://IPVPS:10000/
@@ -19,6 +21,7 @@
 * Script resvis : reiniciar serviços: dropbear, webmin, squid3, openvpn, sslh e ssh
 * Script speedtest : speedtest VPS
 * Script about : informações sobre o script de instalação automática
+* Script VNC : Acesso via GUI : 5901
 * Antes do script de instalação automática seguinte ser instalado, verifique se o seu VPS tem OS Debian 8 32/64 Bit. Certifique-se de que o VPS ainda está vazia sem scripts anteriores.
 
 ● Copiar o seguinte comando e pressione enter
