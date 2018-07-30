@@ -293,6 +293,7 @@ wget -O resvis "https://raw.githubusercontent.com/redeviver/script/master/resvis
 wget -O speedtest "https://raw.githubusercontent.com/redeviver/script/master/speedtest_cli.py"
 wget -O info "https://raw.githubusercontent.com/redeviver/script/master/info.sh"
 wget -O about "https://raw.githubusercontent.com/redeviver/script/master/about.sh"
+wget -O VNC "https://raw.githubusercontent.com/redeviver/script/master/vnc.sh"
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
@@ -307,6 +308,7 @@ chmod +x speedtest
 chmod +x info
 chmod +x expdel
 chmod +x about
+chmod +x VNC
 
 # finishing
 cd
