@@ -80,6 +80,7 @@ sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 
 # install wget, sudo and curl
 apt-get update;apt-get -y install wget sudo curl;
+apt install dos2unix
 
 # set time GMT -3
 ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
@@ -115,7 +116,6 @@ curl "https://bintray.com/user/downloadSubjectPublicKey?username=bintray"| apt-k
 apt-get update
 apt-get install neofetch
 echo "clear" >> .bash_profile
-echo "neofetch" >> .bash_profile
 echo "menu" >> .bash_profile
 
 # install webserver
@@ -288,7 +288,7 @@ rm /etc/issue.net
 wget -O /etc/issue.net "https://raw.githubusercontent.com/redeviver/script/master/issue.net"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
-service ssh restart
+service sshd restart
 service dropbear restart
 
 # download script
@@ -304,7 +304,7 @@ wget -O resvis "https://raw.githubusercontent.com/redeviver/script/master/resvis
 wget -O speedtest "https://raw.githubusercontent.com/redeviver/script/master/speedtest_cli.py"
 wget -O info "https://raw.githubusercontent.com/redeviver/script/master/info.sh"
 wget -O about "https://raw.githubusercontent.com/redeviver/script/master/about.sh"
-wget -O VNC "https://raw.githubusercontent.com/redeviver/script/master/vnc.sh"
+wget -O vnc "https://raw.githubusercontent.com/redeviver/script/master/vnc.sh"
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
@@ -319,7 +319,7 @@ chmod +x speedtest
 chmod +x info
 chmod +x expdel
 chmod +x about
-chmod +x VNC
+chmod +x vnc && dos2unix vnc
 
 # finishing
 cd
@@ -328,9 +328,9 @@ service nginx start
 service openvpn restart
 service cron restart
 service sshd restart
-service sslh restart
 service dropbear restart
 service stunnel4 restart
+service sslh restart
 service squid3 restart
 service fail2ban restart
 service webmin restart
