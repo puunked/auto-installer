@@ -116,8 +116,6 @@ apt-get update
 apt-get install neofetch
 echo "clear" >> .bash_profile
 echo "neofetch" >> .bash_profile
-echo "sleep5" >> .bash_profile
-echo "clear" >> .bash_profile
 echo "menu" >> .bash_profile
 
 # install webserver
@@ -174,7 +172,7 @@ apt-get -y install sslh
 echo ' 
 RUN=yes
 DAEMON=/usr/sbin/sslh
-DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --ssl 127.0.0.1:443 --tsl 127.0.0.1:81 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
+DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --ssl 127.0.0.1:443 --tsl 127.0.0.1:4444 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
 echo '
 iptables -t mangle -N SSLH
 iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 143 --jump SSLH
@@ -187,8 +185,8 @@ service sslh start
 # install dropbear
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 444"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=80/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 80 -p 444"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service sshd restart
@@ -214,9 +212,9 @@ wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/redeviver/s
 sed -i $MYIP2 /etc/stunnel/stunnel.conf
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart
-iptables -A INPUT -p tcp --dport 444 -j ACCEPT
 iptables -A INPUT -p tcp --dport 587 -j ACCEPT
 iptables -A INPUT -p tcp --dport 943 -j ACCEPT
+iptables -A INPUT -p tcp --dport 4444 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8888 -j ACCEPT
 iptables-save > /etc/iptables_set.conf
 
