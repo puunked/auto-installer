@@ -190,8 +190,8 @@ service sslh start
 # install dropbear
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=80/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 80 -p 443"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 444"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service sshd restart
@@ -354,7 +354,7 @@ echo "Service"  | tee -a log-install.txt
 echo "-------"  | tee -a log-install.txt
 echo "OpenSSH  : 22, 143"  | tee -a log-install.txt
 echo "Dropbear : 443, 444"  | tee -a log-install.txt
-echo "SSL      : 943"  | tee -a log-install.txt
+echo "SSL      : 587, 943"  | tee -a log-install.txt
 echo "Squid3   : 80, 3128, 8799, 8080 (limit to IP SSH)"  | tee -a log-install.txt
 echo "OpenVPN R3V1V3R : TCP 1194 (client config : http://$MYIP:81/r3v1v3r.ovpn)"  | tee -a log-install.txt
 echo "OpenVPN SSLH    : TCP 1195 (client config : http://$MYIP:81/sslh.ovpn)"  | tee -a log-install.txt
