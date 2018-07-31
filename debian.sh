@@ -214,6 +214,7 @@ wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/redeviver/s
 sed -i $MYIP2 /etc/stunnel/stunnel.conf
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart
+iptables -A INPUT -p tcp --dport 444 -j ACCEPT
 iptables -A INPUT -p tcp --dport 587 -j ACCEPT
 iptables -A INPUT -p tcp --dport 943 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8888 -j ACCEPT
@@ -349,7 +350,7 @@ echo "Service"  | tee -a log-install.txt
 echo "-------"  | tee -a log-install.txt
 echo "OpenSSH  : 22, 143"  | tee -a log-install.txt
 echo "Dropbear : 443, 444"  | tee -a log-install.txt
-echo "SSL      : 587, 943"  | tee -a log-install.txt
+echo "SSL      : 587, 943, 4444, 8888"  | tee -a log-install.txt
 echo "Squid3   : 80, 3128, 8799, 8080 (limit to IP SSH)"  | tee -a log-install.txt
 echo "OpenVPN R3V1V3R : TCP 1194 (client config : http://$MYIP:81/r3v1v3r.ovpn)"  | tee -a log-install.txt
 echo "OpenVPN SSLH    : TCP 1195 (client config : http://$MYIP:81/sslh.ovpn)"  | tee -a log-install.txt
