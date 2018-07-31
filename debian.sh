@@ -174,15 +174,12 @@ apt-get -y install sslh
 echo ' 
 RUN=yes
 DAEMON=/usr/sbin/sslh
-DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --ssl 127.0.0.1:443 --tsl 127.0.0.1:444 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
+DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --ssl 127.0.0.1:443 --tsl 127.0.0.1:81 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
 echo '
 iptables -t mangle -N SSLH
 iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 143 --jump SSLH
 iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 443 --jump SSLH
-iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 444 --jump SSLH
 iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 1194 --jump SSLH
-iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 3128 --jump SSLH
-iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 8799 --jump SSLH
 iptables -t mangle -A SSLH --jump MARK --set-mark 0x1
 iptables -t mangle -A SSLH --jump ACCEPT ' > /etc/rc.local
 service sslh start
@@ -196,8 +193,6 @@ echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service sshd restart
 service dropbear restart
-
-service sslh restart
 
 # install dropbear 2018
 cd
