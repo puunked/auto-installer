@@ -86,7 +86,7 @@ ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
-service ssh restart
+service sshd restart
 
 # set repo
 wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/redeviver/script/master/sources.list.debian8"
@@ -116,6 +116,9 @@ apt-get update
 apt-get install neofetch
 echo "clear" >> .bash_profile
 echo "neofetch" >> .bash_profile
+echo "sleep5" >> .bash_profile
+echo "clear" >> .bash_profile
+echo "menu" >> .bash_profile
 
 # install webserver
 cd
@@ -172,7 +175,16 @@ echo '
 RUN=yes
 DAEMON=/usr/sbin/sslh
 DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 --ssl 127.0.0.1:443 --tsl 127.0.0.1:444 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
-cat /etc/default/sslh
+echo '
+iptables -t mangle -N SSLH
+iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 143 --jump SSLH
+iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 443 --jump SSLH
+iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 444 --jump SSLH
+iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 1194 --jump SSLH
+iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 3128 --jump SSLH
+iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 8799 --jump SSLH
+iptables -t mangle -A SSLH --jump MARK --set-mark 0x1
+iptables -t mangle -A SSLH --jump ACCEPT ' > /etc/rc.local
 service sslh start
 
 # install dropbear
