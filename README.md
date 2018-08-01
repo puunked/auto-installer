@@ -2,14 +2,14 @@
 
 * OpenSSH, port : 22, 143
 * Dropbear, port : 443, 444
-* SSLH : SSL/SSH Multiplexer
-* SSL/TLS 
-* STUNNEL : OVPN port : 587, SSH port : 943, SQUID port : 8888  
+* SSLH, port 443 : SSL/SSH Multiplexer
+* SSL/TLS : 443
+* STUNNEL : OVPN port : 587, SSH port : 943, DROPBEAR : 993, SQUID port : 8888  
 * Squid3, port : 80, 3128, 8799, 8080 (limite para IP SSH)
 * Badvpn : badvpn-udpgw port 7300
 * Webmin : http://IPVPS:10000/
 * Nginx : 81
-* OpenVPN TCP 1194
+* OpenVPN TCP 587
 * OpenVPN TCP 1194 sslh
 * OpenVPN TCP 1195 stunnel
 * Script menu : para exibir o menu
