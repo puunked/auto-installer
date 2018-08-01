@@ -195,11 +195,11 @@ service dropbear restart
 # install dropbear 2018
 cd
 wget https://raw.githubusercontent.com/redeviver/script/master/dropbear-2018.76.tar.bz2
-apt-get install zlib1g-dev
+apt-get -y install zlib1g-dev
 bzip2 -cd dropbear-2018.76.tar.bz2  | tar xvf -
 cd dropbear-2018.76
 ./configure
-make && make install
+make && make install -y
 mv /usr/sbin/dropbear /usr/sbin/dropbear1
 ln /usr/local/sbin/dropbear /usr/sbin/dropbear
 service dropbear restart
