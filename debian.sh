@@ -229,6 +229,13 @@ chmod +x /bin/sq3
 sleep 1
 sq3
 
+# install shadowsocks
+#apt-get install python-pip python-m2crypto
+#pip install shadowsocks
+#/etc/shadowsocks.json
+
+# install TOR + Polipo + Privoxy
+
 # install webmin
 cd
 wget "https://raw.githubusercontent.com/redeviver/script/master/webmin_1.890_all.deb"
