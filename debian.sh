@@ -126,12 +126,13 @@ rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/redeviver/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="refresh"
-content="2;url=https://jdbit.odoo.com">
+content="2;url=http://empreendedores-sem-crise.jimdosite.com/">
 <head>
 <title>REDIRECIONADOR</title>
 </head>
-<body bgcolor="32ff15">
+<body bgcolor="000000">
 <body>
 <center>
 <br>
