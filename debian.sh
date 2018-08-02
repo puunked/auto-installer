@@ -124,7 +124,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/redeviver/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
-wget https://raw.githubusercontent.com/redeviver/script/master/index.html > /home/vps/public_html/index.html
+wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/redeviver/script/master/index.html" > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/redeviver/script/master/vps.conf"
 service nginx restart
 
