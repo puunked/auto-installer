@@ -224,32 +224,10 @@ apt-get -y install fail2ban;
 service fail2ban restart
 
 # install squid3
-cd
-apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/redeviver/script/master/squid3.conf"
-sed -i $MYIP2 /etc/squid3/squid.conf;
-sleep 2s
-###PAYLOADS###
-touch /etc/payloads
-echo -e "
-portalrecarga.vivo.com.br/recarga
-portalrecarga.vivo.com.br/recarga/home
-minhaclaro.claro.com.br
-recargafacil.claro.com.br
-frontend.claro.com.br
-appfb.claro.com.sv
-empresas.claro.com.br
-d1n212ccp6ldpw.cloudfront.net
-claro-gestoronline.claro.com.br
-forms.claro.com.br
-golpf.claro.com.br
-logtiscap.claro.com.br
-www.recargafacil.claro.com.br
-.vivo.com.br
-.bradescocelular.com.br
-.claroseguridad.com
-.veek.com.br" > /etc/payloads
-service squid3 restart
+wget  -O /bin/sq3 -o /dev/null https://raw.githubusercontent.com/redeviver/ovpn/master/sq3
+chmod +x /bin/sq3
+sleep 1
+sq3
 
 # install webmin
 cd
