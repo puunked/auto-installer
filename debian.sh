@@ -125,26 +125,7 @@ rm /etc/nginx/sites-available/default
 #rm /etc/nginx/snippets/listen-https.conf
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/redeviver/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="refresh"
-content="2;url=http://empreendedores-sem-crise.jimdosite.com/">
-<head>
-<title>R3D1R3C10N4D0R</title>
-</head>
-<body bgcolor="ffffff">
-<body>
-<center>
-<br>
-<pre>R3V1V3R 1NT3RN3T L1VR3</pre>
-<br>
-<br>
-<basefont size="5">
-Em DOIS segundos você estará sendo levado <br>
-<basefont size="7">
-para um lugar muito melhor!!
-</body>
-</html> " > /home/vps/public_html/index.html
+wget "https://raw.githubusercontent.com/redeviver/script/master/index.html" > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/redeviver/script/master/vps.conf"
 service nginx restart
 
