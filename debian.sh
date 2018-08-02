@@ -122,10 +122,9 @@ echo "menu" >> .bash_profile
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-#rm /etc/nginx/snippets/listen-https.conf
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/redeviver/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
-wget "https://raw.githubusercontent.com/redeviver/script/master/index.html" > /home/vps/public_html/index.html
+wget https://raw.githubusercontent.com/redeviver/script/master/index.html > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/redeviver/script/master/vps.conf"
 service nginx restart
 
@@ -342,7 +341,7 @@ echo "unset HISTFILE" >> /etc/profile
 clear
 
 # info
-echo -e "\033[1;33mR3V1V3R"
+echo -e "\033[1;33mR3V1V3R"  | tee log-install.txt
 echo "R3V1V3R 1NT3RN3T L1VR3:" | tee log-install.txt
 echo "===========================================" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
