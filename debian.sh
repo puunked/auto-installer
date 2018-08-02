@@ -190,7 +190,7 @@ sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 444"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
-service sshd restart
+service ssh restart
 service dropbear restart
 
 # install dropbear 2018
@@ -233,6 +233,11 @@ sq3
 #apt-get install python-pip python-m2crypto
 #pip install shadowsocks
 #/etc/shadowsocks.json
+#echo ' /usr/bin/python /usr/local/bin/ssserver -c /etc/shadowsocks.json -d start ' > /etc/rc.local
+#ssserver -c /etc/shadowsocks.json -d start
+
+# iptables shadowsocks
+#iptables -I INPUT -p tcp --dport 8000 -j ACCEPT
 
 # install TOR + Polipo + Privoxy
 
@@ -318,6 +323,7 @@ service dropbear restart
 service stunnel4 restart
 service sslh restart
 service squid3 restart
+ssserver -c /etc/shadowsocks.json -d restart
 service fail2ban restart
 service webmin restart
 apt-get autoremove -y
@@ -336,6 +342,8 @@ echo "Dropbear : 443, 444"  | tee -a log-install.txt
 echo "SSLH     : 443"  | tee -a log-install.txt
 echo "SSL      : 587, 943, 993, 8888"  | tee -a log-install.txt
 echo "Squid3   : 80, 3128, 8799, 8080 Limite IP SSH"  | tee -a log-install.txt
+echo "Shadowsocks : 8000 | tee -a log-install.txt
+echo "TOR + Polipo + Privoxy : 9150, 8118, 8123 | tee -a log-install.txt
 echo "OpenVPN  : R3V1V3R TCP 1194"  | tee -a log-install.txt
 echo "(client config : http://$MYIP:81/r3v1v3r.ovpn) | tee -a log-install.txt
 echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
