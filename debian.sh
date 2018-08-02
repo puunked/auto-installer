@@ -319,8 +319,7 @@ echo "unset HISTFILE" >> /etc/profile
 clear
 
 # info
-echo -e "\033[1;33mR3V1V3R"  | tee log-install.txt
-echo "R3V1V3R 1NT3RN3T L1VR3:" | tee log-install.txt
+echo -e "\033[1;33mR3V1V3R 1NT3RN3T L1VR3:" | tee log-install.txt
 echo "===========================================" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Serviços"  | tee -a log-install.txt
@@ -329,26 +328,25 @@ echo "OpenSSH  : 22, 143"  | tee -a log-install.txt
 echo "Dropbear : 443, 444"  | tee -a log-install.txt
 echo "SSLH     : 443"  | tee -a log-install.txt
 echo "SSL      : 587, 943, 993, 8888"  | tee -a log-install.txt
-echo "Squid3   : 80, 3128, 8799, 8080 (limit to IP SSH)"  | tee -a log-install.txt
-echo "OpenVPN  : R3V1V3R TCP 1194 (client config : http://$MYIP:81/r3v1v3r.ovpn)"  | tee -a log-install.txt
-echo "OpenVPN  : SSLH    TCP 1195 (client config : http://$MYIP:81/sslh.ovpn)"  | tee -a log-install.txt
-echo "OpenVPN  : Stunnel TCP 1196 (client config : http://$MYIP:81/stunnel.ovpn)"  | tee -a log-install.txt
+echo "Squid3   : 80, 3128, 8799, 8080 Limite IP SSH"  | tee -a log-install.txt
+echo "OpenVPN  : R3V1V3R TCP 1194"  | tee -a log-install.txt
+echo "(client config : http://$MYIP:81/r3v1v3r.ovpn) | tee -a log-install.txt
 echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
 echo "nginx    : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Scripts"  | tee -a log-install.txt
 echo "------"  | tee -a log-install.txt
-echo "menu         (Exibe uma lista de comandos disponíveis)"  | tee -a log-install.txt
+echo "menu         (Comandos Disponíveis)"  | tee -a log-install.txt
 echo "user-add     (Cria uma conta SSH)"  | tee -a log-install.txt
 echo "trial        (Cria uma conta Teste)"  | tee -a log-install.txt
 echo "user-del     (Remove Contas SSH)"  | tee -a log-install.txt
 echo "user-login   (Verifica o login de usuário)"  | tee -a log-install.txt
 echo "user-list    (Verificar membro SSH)"  | tee -a log-install.txt
 echo "expdel       (Excluir usuário expirado)"  | tee -a log-install.txt
-echo "resvis       (Reiniciar Serviços Dropbear, Webmin, Squid3, OpenVPN, STUNNEL, SSLH e SSH)"  | tee -a log-install.txt
+echo "resvis       (Reiniciar Serviços)"  | tee -a log-install.txt
 echo "reboot       (Reiniciar VPS)"  | tee -a log-install.txt
 echo "speedtest    (Speedtest VPS)"  | tee -a log-install.txt
-echo "info         (Exibir informações do sistema)"  | tee -a log-install.txt
+echo "info         (Exibir informações VPS)"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Outros recursos"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
