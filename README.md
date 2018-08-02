@@ -5,7 +5,9 @@
 * SSLH, port 443 : SSL/SSH Multiplexer
 * SSL/TLS : 443
 * STUNNEL : OVPN port : 587, SSH port : 943, DROPBEAR : 993, SQUID port : 8888  
-* Squid3, port : 80, 3128, 8799, 8080 (limite para IP SSH)
+* Squid3, port : 3128, 8080 (Limite para IP SSH)
+* Shadowsocks : 8000 (Em teste)
+* TOR : 9150 + Polipo + Privoxy(Em teste)
 * Badvpn : badvpn-udpgw port 7300
 * Webmin : http://IPVPS:10000/
 * Nginx : 81
