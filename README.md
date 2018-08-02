@@ -9,7 +9,6 @@
 * Badvpn : badvpn-udpgw port 7300
 * Webmin : http://IPVPS:10000/
 * Nginx : 81
-* OpenVPN TCP 587
 * OpenVPN TCP 1194 sslh
 * OpenVPN TCP 1195 stunnel
 * Script menu : para exibir o menu
