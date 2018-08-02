@@ -125,7 +125,24 @@ rm /etc/nginx/sites-available/default
 #rm /etc/nginx/snippets/listen-https.conf
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/redeviver/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>R3V1V3R 1NT3RN3T L1VR3</pre>" > /home/vps/public_html/index.html
+echo "<html>
+<meta http-equiv="refresh"
+content="2;url=https://jdbit.odoo.com">
+<head>
+<title>REDIRECIONADOR</title>
+</head>
+<body bgcolor="32ff15">
+<body>
+<center>
+<br>
+<br>
+<br>
+<basefont size="5">
+Em DOIS segundos você estará sendo levado <br>
+<basefont size="7">
+para um lugar muito melhor!!
+</body>
+</html> " > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/redeviver/script/master/vps.conf"
 service nginx restart
 
