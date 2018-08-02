@@ -130,9 +130,9 @@ echo "<html>
 <meta http-equiv="refresh"
 content="2;url=http://empreendedores-sem-crise.jimdosite.com/">
 <head>
-<title>REDIRECIONADOR</title>
+<title>R3D1R3C10N4D0R</title>
 </head>
-<body bgcolor="000000">
+<body bgcolor="ffffff">
 <body>
 <center>
 <br>
