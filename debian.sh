@@ -342,10 +342,10 @@ echo "Dropbear : 443, 444"  | tee -a log-install.txt
 echo "SSLH     : 443"  | tee -a log-install.txt
 echo "SSL      : 587, 943, 993, 8888"  | tee -a log-install.txt
 echo "Squid3   : 80, 3128, 8799, 8080 Limite IP SSH"  | tee -a log-install.txt
-echo "Shadowsocks : 8000 | tee -a log-install.txt
-echo "TOR + Polipo + Privoxy : 9150, 8118, 8123 | tee -a log-install.txt
+echo "Shadowsocks : 8000" | tee -a log-install.txt
+echo "TOR + Polipo + Privoxy : 9150, 8118, 8123" | tee -a log-install.txt
 echo "OpenVPN  : R3V1V3R TCP 1194"  | tee -a log-install.txt
-echo "(client config : http://$MYIP:81/r3v1v3r.ovpn) | tee -a log-install.txt
+echo "(client config : http://$MYIP:81/r3v1v3r.ovpn)" | tee -a log-install.txt
 echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
 echo "nginx    : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
