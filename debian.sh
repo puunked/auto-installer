@@ -204,7 +204,7 @@ make && make install -y
 mv /usr/sbin/dropbear /usr/sbin/dropbear1
 ln /usr/local/sbin/dropbear /usr/sbin/dropbear
 service dropbear restart
-rm -f /root/dropbear-2018.76.tar.bz2
+rm -rf /root/dropbear-2018.76.tar.bz2
 
 # install stunnel4
 apt-get -y install stunnel4
@@ -296,6 +296,7 @@ wget -O speedtest "https://raw.githubusercontent.com/redeviver/script/master/spe
 wget -O info "https://raw.githubusercontent.com/redeviver/script/master/info.sh"
 wget -O about "https://raw.githubusercontent.com/redeviver/script/master/about.sh"
 wget -O vnc "https://raw.githubusercontent.com/redeviver/script/master/vnc.sh"
+wget -O delete "https://raw.githubusercontent.com/redeviver/script/master/delete.sh"
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
@@ -310,6 +311,7 @@ chmod +x speedtest
 chmod +x info
 chmod +x expdel
 chmod +x about
+chmod +x delete
 chmod +x vnc && dos2unix vnc
 
 # finishing
@@ -374,14 +376,11 @@ echo "---------"  | tee -a log-install.txt
 echo "R3V1V3R 1NT3RN3T L1VR3"  | tee -a log-install.txt
 echo "TheGrapevine "  | tee -a log-install.txt
 echo "Google"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
 echo "----"  | tee -a log-install.txt
 echo "https://t.me/tcpoverhttptunnel"  | tee -a log-install.txt
 echo "@thegrapevine"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Log Installation --> /root/log-install.txt"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
 echo -e "===========================================\033[1;37m"  | tee -a log-install.txt
 cd
-rm -f /root/debian.sh
+rm -f ~/debian.sh
