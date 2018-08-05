@@ -103,7 +103,7 @@ apt-get update
 apt-get -y install nginx
 
 # install essential package
-apt-get -y install nano iptables dnsutils openvpn screen whois ngrep unzip unrar nload
+apt-get -y install nano iptables dnsutils openvpn screen whois ngrep nload nmap unzip unrar zip
 
 # install neofetch
 echo "deb http://dl.bintray.com/dawidd6/neofetch jessie main" | tee -a /etc/apt/sources.list
@@ -134,11 +134,11 @@ wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/redeviver/sc
 cd /etc/openvpn/
 tar xf openvpn.tar
 rm -f /etc/openvpn/openvpn.tar
-wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/redeviver/script/master/1194.conf"
+wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/redeviver/script/master/587.conf"
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-iptables -t nat -I POSTROUTING -s 10.8.10.0/24 -o eth0 -j MASQUERADE
+iptables -t nat -I POSTROUTING -s 10.8.100.0/24 -o eth0 -j MASQUERADE
 iptables-save > /etc/iptables_set.conf
 wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/redeviver/script/master/iptables"
 chmod +x /etc/network/if-up.d/iptables
@@ -146,7 +146,7 @@ service openvpn restart
 
 # configuração openvpn
 cd /etc/openvpn/
-wget -O /etc/openvpn/r3v1v3r.ovpn "https://raw.githubusercontent.com/redeviver/script/master/client-1194.conf"
+wget -O /etc/openvpn/r3v1v3r.ovpn "https://raw.githubusercontent.com/redeviver/script/master/client-587.conf"
 sed -i $MYIP2 /etc/openvpn/r3v1v3r.ovpn;
 cp r3v1v3r.ovpn /home/vps/public_html/
 
@@ -171,16 +171,16 @@ apt-get -y install sslh
 echo ' 
 RUN=yes
 DAEMON=/usr/sbin/sslh
-DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:1194 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
+DAEMON_OPTS="-u sslh -p 0.0.0.0:443 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:587 --openvpn 127.0.0.1:1194 -P /var/run/sslh/sslh.pid" ' > /etc/default/sslh
 echo '
 iptables -t mangle -N SSLH
 iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 22 --jump SSLH
 iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 143 --jump SSLH
 iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 443 --jump SSLH
-iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 444 --jump SSLH
+iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 587 --jump SSLH
 iptables -t mangle -A OUTPUT --protocol tcp --out-interface eth0 --sport 1194 --jump SSLH
 iptables -t mangle -A SSLH --jump MARK --set-mark 0x1
-iptables -t mangle -A SSLH --jump ACCEPT ' > /etc/rc.local
+iptables -t mangle -A SSLH --jump ACCEPT ' >> /etc/rc.local
 service sslh start
 
 # install dropbear
